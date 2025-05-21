@@ -1,11 +1,29 @@
 import React from "react";
-import ProductItem from "./ProductItem";
-
-const ProductList = () => {
+import ProductoItem from "./ProductItem";
+const ProductList = ({ productos, onDelete, onEdit }) => {
 	return (
-		<div>
-			<ProductItem />
-		</div>
+		<table className="tabla-productos">
+			<thead>
+				<tr>
+					<th>Descripción</th>
+					<th>Precio Unitario</th>
+					<th>Descuento</th>
+					<th>Precio Final</th>
+					<th>Stock</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{productos.map((producto) => (
+					<ProductoItem
+						key={producto.id}
+						producto={producto}
+						onDelete={onDelete}
+						onEdit={onEdit}
+					/>
+				))}
+			</tbody>
+		</table>
 	);
 };
 
