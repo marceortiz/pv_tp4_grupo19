@@ -1,0 +1,8 @@
+.lista-productos {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
