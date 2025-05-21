@@ -41,8 +41,9 @@ function App() {
 		// Filtrar productos por descripción o ID
 		// Convertir a minúsculas para hacer la búsqueda insensible a mayúsculas
 		return productos.filter(
-			(prod) => prod.descripcion.toLowerCase().includes(searchTerm.toLowerCase()) ||
-				prod.id.toString().includes(searchTerm)
+			(prod) =>
+				prod.descripcion.toLowerCase().includes(searchTerm.toLowerCase()) ||
+				prod.id.toString().includes(searchTerm),
 		);
 	};
 	return (
