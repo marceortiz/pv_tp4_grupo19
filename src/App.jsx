@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import "./index.css";
 import { crearProducto } from "./models/producto";
-import { filtrarProductos } from "./utils/productoUtils";
 import ProductForm from "./components/ProductForm";
 import ProductList from "./components/ProductList";
 import SearchBar from "./components/SearchBar";
@@ -37,7 +36,15 @@ function App() {
 		setProductosEditados(null);
 	};
 	// Filtrar productos según el término de búsqueda
-	const productosFiltrados = filtrarProductos(productos, searchTerm);
+	const productosFiltrados = (productos, searchTerm) => {
+		if (!searchTerm) return productos;
+		// Filtrar productos por descripción o ID
+		// Convertir a minúsculas para hacer la búsqueda insensible a mayúsculas
+		return productos.filter(
+			(prod) => prod.descripcion.toLowerCase().includes(searchTerm.toLowerCase()) ||
+				prod.id.toString().includes(searchTerm)
+		);
+	};
 	return (
 		<>
 			<div>
@@ -51,7 +58,7 @@ function App() {
 					/>
 					<SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 					<ProductList
-						productos={productosFiltrados}
+						productos={productosFiltrados(productos, searchTerm)}
 						onEdit={editarProducto}
 						onDelete={eliminarProducto}
 					/>

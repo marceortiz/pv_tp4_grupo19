@@ -1,5 +1,4 @@
-import React from "react";
-import ProductoItem from "./ProductItem";
+import ProductItem from "./ProductItem";
 const ProductList = ({ productos, onDelete, onEdit }) => {
 	return (
 		<table className="tabla-productos">
@@ -15,7 +14,7 @@ const ProductList = ({ productos, onDelete, onEdit }) => {
 			</thead>
 			<tbody>
 				{productos.map((producto) => (
-					<ProductoItem
+					<ProductItem
 						key={producto.id}
 						producto={producto}
 						onDelete={onDelete}
