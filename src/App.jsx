@@ -5,18 +5,18 @@ import ProductList from "./components/ProductList";
 import SearchBar from "./components/SearchBar";
 
 function App() {
-	return (
-		<>
-			<div>
-				<h1>Gestor de Productos</h1>
-				<div>
-					<ProductForm />
-					<SearchBar />
-					<ProductList />
-				</div>
-			</div>
-		</>
-	);
+  return (
+    <>
+      <div>
+        <h1>Gestor de Productos</h1>
+        <div>
+          <ProductForm />
+          <SearchBar />
+          <ProductList />
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default App;
