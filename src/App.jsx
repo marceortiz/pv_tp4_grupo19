@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./index.css";
-import { crearProducto } from "./models/producto";
 import ProductForm from "./components/ProductForm";
 import ProductList from "./components/ProductList";
 import SearchBar from "./components/SearchBar";
+import { crearProducto } from "./models/producto";
 
 let contadorId = 0;
 function App() {
