@@ -20,10 +20,10 @@ export default function GestionarProducto() {
   };
 
   const actualizarProducto = (productoActualizado) => {
-    const actualizado = new Producto(productoActualizado);
-    actualizado.id = productoActualizado.id; // preserva ID original al editar
     setProductos(
-      productos.map((p) => (p.id === actualizado.id ? actualizado : p)),
+      productos.map((p) =>
+        p.id === productoActualizado.id ? { ...p, ...productoActualizado } : p
+      )
     );
     setProductoEditado(null);
   };

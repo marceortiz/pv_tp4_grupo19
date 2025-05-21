@@ -3,6 +3,7 @@ import "./style.css";
 
 export default function ProductForm({ onSubmit, productoInicial }) {
   const [producto, setProducto] = useState({
+    id: null, // Agregamos el id al estado inicial
     descripcion: "",
     precioUnitario: "",
     descuento: "",
@@ -12,6 +13,7 @@ export default function ProductForm({ onSubmit, productoInicial }) {
   useEffect(() => {
     if (productoInicial) {
       setProducto({
+        id: productoInicial.id, // Incluimos el id del producto inicial
         descripcion: productoInicial.descripcion,
         precioUnitario: productoInicial.precioUnitario,
         descuento: productoInicial.descuento,
@@ -27,8 +29,9 @@ export default function ProductForm({ onSubmit, productoInicial }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(producto);
+    onSubmit(producto); // Enviamos el producto completo, incluyendo el id
     setProducto({
+      id: null,
       descripcion: "",
       precioUnitario: "",
       descuento: "",
