@@ -48,7 +48,7 @@ function App() {
 	};
 	return (
 		<>
-			<div>
+			<div className="container">
 				<h1>Gestor de Productos</h1>
 				<div>
 					<ProductForm
