@@ -5,54 +5,80 @@ const ProductItem = ({ product, onEdit, onDelete }) => {
   const precioConDescuento = product.precioUnitario * (1 - product.descuento / 100);
   
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-      <div className="flex justify-between items-start mb-3">
-        <div className="flex-1">
+    <div className="product-item">
+      <div className="flex justify-between items-center mb-4">
+        <div style={{ flex: 1 }}>
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+            <span style={{ 
+              fontSize: '0.75rem', 
+              backgroundColor: '#f3f4f6', 
+              color: '#6b7280', 
+              padding: '0.25rem 0.5rem', 
+              borderRadius: '0.25rem' 
+            }}>
               ID: {product.id}
             </span>
-            <span className={`text-xs px-2 py-1 rounded ${
-              product.stock > 0 
-                ? 'bg-green-100 text-green-700' 
-                : 'bg-red-100 text-red-700'
-            }`}>
+            <span style={{ 
+              fontSize: '0.75rem', 
+              backgroundColor: product.stock > 0 ? '#dcfce7' : '#fee2e2',
+              color: product.stock > 0 ? '#166534' : '#991b1b',
+              padding: '0.25rem 0.5rem', 
+              borderRadius: '0.25rem' 
+            }}>
               Stock: {product.stock}
             </span>
           </div>
-          <h4 className="font-semibold text-gray-800 mb-2">{product.descripcion}</h4>
+          <h4 className="font-bold mb-2">{product.descripcion}</h4>
         </div>
         
         <div className="flex gap-2">
           <button
             onClick={() => onEdit(product)}
-            className="p-1 text-blue-600 hover:bg-blue-50 rounded"
+            style={{ 
+              padding: '0.25rem', 
+              color: '#2563eb', 
+              backgroundColor: 'transparent',
+              border: 'none',
+              borderRadius: '0.25rem',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = '#eff6ff'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
             title="Editar producto"
           >
-            <Edit className="w-4 h-4" />
+            <Edit size={16} />
           </button>
           <button
             onClick={() => onDelete(product.id)}
-            className="p-1 text-red-600 hover:bg-red-50 rounded"
+            style={{ 
+              padding: '0.25rem', 
+              color: '#dc2626', 
+              backgroundColor: 'transparent',
+              border: 'none',
+              borderRadius: '0.25rem',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = '#fef2f2'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
             title="Eliminar producto"
           >
-            <Trash2 className="w-4 h-4" />
+            <Trash2 size={16} />
           </button>
         </div>
       </div>
       
-      <div className="grid grid-cols-2 gap-4 text-sm">
+      <div className="grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '1rem', fontSize: '0.875rem' }}>
         <div>
-          <span className="text-gray-500">Precio original:</span>
-          <div className="font-medium">${product.precioUnitario.toFixed(2)}</div>
+          <span style={{ color: '#6b7280' }}>Precio original:</span>
+          <div className="font-bold">${product.precioUnitario.toFixed(2)}</div>
         </div>
         <div>
-          <span className="text-gray-500">Descuento:</span>
-          <div className="font-medium text-orange-600">{product.descuento}%</div>
+          <span style={{ color: '#6b7280' }}>Descuento:</span>
+          <div className="font-bold" style={{ color: '#ea580c' }}>{product.descuento}%</div>
         </div>
-        <div className="col-span-2">
-          <span className="text-gray-500">Precio final:</span>
-          <div className="font-bold text-green-600 text-lg">
+        <div style={{ gridColumn: '1 / -1' }}>
+          <span style={{ color: '#6b7280' }}>Precio final:</span>
+          <div className="font-bold text-lg" style={{ color: '#16a34a' }}>
             ${precioConDescuento.toFixed(2)}
           </div>
         </div>

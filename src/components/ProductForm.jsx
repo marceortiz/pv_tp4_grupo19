@@ -75,14 +75,14 @@ const ProductForm = ({ product, onSave, onCancel, isEditing }) => {
   };
 
   return (
-    <div className="bg-white p-6 border border-gray-200 rounded-lg shadow-sm mb-6">
-      <h3 className="text-lg font-semibold mb-4 text-gray-800">
+    <div className="card mb-6">
+      <h3 className="text-lg font-bold mb-4">
         {isEditing ? 'Modificar Producto' : 'Agregar Nuevo Producto'}
       </h3>
       
-      <div className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+      <div>
+        <div className="form-group">
+          <label className="form-label">
             Descripción
           </label>
           <input
@@ -90,14 +90,14 @@ const ProductForm = ({ product, onSave, onCancel, isEditing }) => {
             name="descripcion"
             value={formData.descripcion}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="form-input"
             required
           />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+        <div className="grid grid-cols-3">
+          <div className="form-group">
+            <label className="form-label">
               Precio Unitario ($)
             </label>
             <input
@@ -107,13 +107,13 @@ const ProductForm = ({ product, onSave, onCancel, isEditing }) => {
               onChange={handleChange}
               min="0"
               step="0.01"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="form-input"
               required
             />
           </div>
           
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+          <div className="form-group">
+            <label className="form-label">
               Descuento (%)
             </label>
             <input
@@ -123,13 +123,13 @@ const ProductForm = ({ product, onSave, onCancel, isEditing }) => {
               onChange={handleChange}
               min="0"
               max="100"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="form-input"
               required
             />
           </div>
           
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+          <div className="form-group">
+            <label className="form-label">
               Stock
             </label>
             <input
@@ -138,29 +138,29 @@ const ProductForm = ({ product, onSave, onCancel, isEditing }) => {
               value={formData.stock}
               onChange={handleChange}
               min="0"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="form-input"
               required
             />
           </div>
         </div>
         
-        <div className="flex gap-2 justify-end">
+        <div className="flex gap-2" style={{ justifyContent: 'flex-end' }}>
           {isEditing && (
             <button
               type="button"
               onClick={onCancel}
-              className="px-4 py-2 text-gray-600 bg-gray-100 rounded-md hover:bg-gray-200 flex items-center gap-2"
+              className="btn btn-secondary"
             >
-              <X className="w-4 h-4" />
+              <X size={16} />
               Cancelar
             </button>
           )}
           <button
             type="button"
             onClick={handleSubmit}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 flex items-center gap-2"
+            className="btn btn-primary"
           >
-            <Save className="w-4 h-4" />
+            <Save size={16} />
             {isEditing ? 'Guardar Cambios' : 'Agregar Producto'}
           </button>
         </div>

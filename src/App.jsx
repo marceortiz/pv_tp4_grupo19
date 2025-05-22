@@ -80,14 +80,14 @@ const App = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+    <div style={{ minHeight: '100vh' }}>
+      <div className="container">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">
+        <div className="text-center mb-6">
+          <h1 className="text-3xl font-bold mb-4">
             Gestor de Productos
           </h1>
-          <p className="text-gray-600">
+          <p style={{ color: '#6b7280' }}>
             Administra tu inventario de productos de manera eficiente
           </p>
         </div>
@@ -96,9 +96,9 @@ const App = () => {
         <div className="mb-6">
           <button
             onClick={() => setShowForm(!showForm)}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center gap-2"
+            className="btn btn-primary"
           >
-            <Plus className="w-4 h-4" />
+            <Plus size={16} />
             {showForm ? 'Ocultar Formulario' : 'Agregar Producto'}
           </button>
         </div>
@@ -120,23 +120,23 @@ const App = () => {
         />
 
         {/* Estadísticas */}
-        <div className="bg-white p-4 rounded-lg shadow-sm mb-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+        <div className="card mb-6">
+          <div className="grid grid-cols-3 text-center">
             <div>
-              <div className="text-2xl font-bold text-blue-600">{products.length}</div>
-              <div className="text-gray-600">Total de Productos</div>
+              <div className="text-2xl font-bold" style={{ color: '#2563eb' }}>{products.length}</div>
+              <div style={{ color: '#6b7280' }}>Total de Productos</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-green-600">
+              <div className="text-2xl font-bold" style={{ color: '#16a34a' }}>
                 {filteredProducts.length}
               </div>
-              <div className="text-gray-600">Productos Mostrados</div>
+              <div style={{ color: '#6b7280' }}>Productos Mostrados</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-orange-600">
+              <div className="text-2xl font-bold" style={{ color: '#ea580c' }}>
                 {products.filter(p => p.stock === 0).length}
               </div>
-              <div className="text-gray-600">Sin Stock</div>
+              <div style={{ color: '#6b7280' }}>Sin Stock</div>
             </div>
           </div>
         </div>

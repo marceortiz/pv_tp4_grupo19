@@ -4,15 +4,15 @@ import ProductItem from './ProductItem';
 const ProductList = ({ products, onEdit, onDelete }) => {
   if (products.length === 0) {
     return (
-      <div className="text-center py-8 text-gray-500">
-        <div className="text-4xl mb-2">📦</div>
+      <div className="text-center" style={{ padding: '2rem 0', color: '#6b7280' }}>
+        <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>📦</div>
         <p>No hay productos para mostrar</p>
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-3">
       {products.map(product => (
         <ProductItem
           key={product.id}
